@@ -36,27 +36,27 @@ html_template = """<html>
 <title>Blog Reader</title>
 <style>
 :root {
-  --bg-color: #fafafa;
-  --text-color: #1a1a1a;
-  --header-bg: #ffffff;
-  --sidebar-bg: #f5f5f5;
-  --card-bg: #ffffff;
-  --accent-color: #ff6600;
-  --secondary-text: #666666;
-  --border-color: #e0e0e0;
-  --hover-bg: #e8e8e8;
+  --hnfeeds-bg-color: #fafafa;
+  --hnfeeds-text-color: #1a1a1a;
+  --hnfeeds-header-bg: #ffffff;
+  --hnfeeds-sidebar-bg: #f5f5f5;
+  --hnfeeds-card-bg: #ffffff;
+  --hnfeeds-accent-color: #ff6600;
+  --hnfeeds-secondary-text: #666666;
+  --hnfeeds-border-color: #e0e0e0;
+  --hnfeeds-hover-bg: #e8e8e8;
 }
 
 [data-theme="dark"] {
-  --bg-color: #1a1a1a;
-  --text-color: #e4e4e4;
-  --header-bg: #2d2d2d;
-  --sidebar-bg: #252525;
-  --card-bg: #2d2d2d;
-  --accent-color: #ff6600;
-  --secondary-text: #999999;
-  --border-color: #404040;
-  --hover-bg: #3d3d3d;
+  --hnfeeds-bg-color: #1a1a1a;
+  --hnfeeds-text-color: #e4e4e4;
+  --hnfeeds-header-bg: #2d2d2d;
+  --hnfeeds-sidebar-bg: #252525;
+  --hnfeeds-card-bg: #2d2d2d;
+  --hnfeeds-accent-color: #ff6600;
+  --hnfeeds-secondary-text: #999999;
+  --hnfeeds-border-color: #404040;
+  --hnfeeds-hover-bg: #3d3d3d;
 }
 
 * {
@@ -67,15 +67,15 @@ html_template = """<html>
 
 body {
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-  background-color: var(--bg-color);
-  color: var(--text-color);
+  background-color: var(--hnfeeds-bg-color);
+  color: var(--hnfeeds-text-color);
   line-height: 1.6;
   transition: background-color 0.3s ease, color 0.3s ease;
 }
 
-header {
-  background-color: var(--header-bg);
-  border-bottom: 1px solid var(--border-color);
+.hnfeeds-header {
+  background-color: var(--hnfeeds-header-bg);
+  border-bottom: 1px solid var(--hnfeeds-border-color);
   padding: 1rem 2rem;
   position: fixed;
   top: 0;
@@ -88,41 +88,42 @@ header {
   height: 60px;
 }
 
-h1 {
+.hnfeeds-title {
   font-size: 1.5rem;
   font-weight: 600;
-  color: var(--accent-color);
+  color: var(--hnfeeds-accent-color);
+  margin: 0;
 }
 
-.header-nav {
+.hnfeeds-header-nav {
   display: flex;
   gap: 1.5rem;
   margin-left: auto;
   margin-right: 1rem;
 }
 
-.header-nav a {
-  color: var(--text-color);
+.hnfeeds-header-nav a {
+  color: var(--hnfeeds-text-color);
   text-decoration: none;
   font-size: 0.95rem;
   transition: color 0.2s ease;
 }
 
-.header-nav a:hover {
-  color: var(--accent-color);
+.hnfeeds-header-nav a:hover {
+  color: var(--hnfeeds-accent-color);
 }
 
-.last-updated {
+.hnfeeds-last-updated {
   font-size: 0.85rem;
-  color: var(--secondary-text);
+  color: var(--hnfeeds-secondary-text);
   margin-left: auto;
   margin-right: 1rem;
 }
 
-.theme-toggle {
+.hnfeeds-theme-toggle {
   background: none;
-  border: 1px solid var(--border-color);
-  color: var(--text-color);
+  border: 1px solid var(--hnfeeds-border-color);
+  color: var(--hnfeeds-text-color);
   padding: 0.5rem 1rem;
   border-radius: 6px;
   cursor: pointer;
@@ -130,20 +131,20 @@ h1 {
   transition: background-color 0.2s ease;
 }
 
-.theme-toggle:hover {
-  background-color: var(--hover-bg);
+.hnfeeds-theme-toggle:hover {
+  background-color: var(--hnfeeds-hover-bg);
 }
 
-.container {
+.hnfeeds-container {
   display: flex;
   margin-top: 60px;
   min-height: calc(100vh - 60px);
 }
 
-.sidebar {
+.hnfeeds-sidebar {
   width: 280px;
-  background-color: var(--sidebar-bg);
-  border-right: 1px solid var(--border-color);
+  background-color: var(--hnfeeds-sidebar-bg);
+  border-right: 1px solid var(--hnfeeds-border-color);
   position: fixed;
   left: 0;
   top: 60px;
@@ -152,214 +153,214 @@ h1 {
   padding: 1rem 0;
 }
 
-.sidebar-header {
+.hnfeeds-sidebar-header {
   padding: 0 1rem 1rem;
   font-size: 0.75rem;
   text-transform: uppercase;
   letter-spacing: 0.5px;
-  color: var(--secondary-text);
+  color: var(--hnfeeds-secondary-text);
   font-weight: 600;
 }
 
-.nav-links {
+.hnfeeds-nav-links {
   list-style: none;
 }
 
-.nav-links li {
+.hnfeeds-nav-links li {
   margin: 0;
 }
 
-.nav-links a {
+.hnfeeds-nav-links a {
   display: block;
   padding: 0.5rem 1rem;
   text-decoration: none;
-  color: var(--text-color);
+  color: var(--hnfeeds-text-color);
   font-size: 0.9rem;
   transition: background-color 0.15s ease;
   border-left: 3px solid transparent;
 }
 
-.nav-links a:hover {
-  background-color: var(--hover-bg);
-  border-left-color: var(--accent-color);
+.hnfeeds-nav-links a:hover {
+  background-color: var(--hnfeeds-hover-bg);
+  border-left-color: var(--hnfeeds-accent-color);
 }
 
-main {
+.hnfeeds-main {
   margin-left: 280px;
   padding: 2rem;
   max-width: 900px;
   width: 100%;
 }
 
-.blog-section {
+.hnfeeds-blog-section {
   margin-bottom: 3rem;
 }
 
-.blog-section h2 {
+.hnfeeds-blog-title {
   font-size: 1.5rem;
   margin-bottom: 1.5rem;
   padding-bottom: 0.5rem;
-  border-bottom: 2px solid var(--accent-color);
+  border-bottom: 2px solid var(--hnfeeds-accent-color);
 }
 
-.blog-section h2 a {
-  color: var(--text-color);
+.hnfeeds-blog-title a {
+  color: var(--hnfeeds-text-color);
   text-decoration: none;
 }
 
-.blog-section h2 a:hover {
-  color: var(--accent-color);
+.hnfeeds-blog-title a:hover {
+  color: var(--hnfeeds-accent-color);
 }
 
-.post {
-  background-color: var(--card-bg);
-  border: 1px solid var(--border-color);
+.hnfeeds-post {
+  background-color: var(--hnfeeds-card-bg);
+  border: 1px solid var(--hnfeeds-border-color);
   border-radius: 8px;
   padding: 1.5rem;
   margin-bottom: 1.5rem;
 }
 
-.post-header {
+.hnfeeds-post-header {
   margin-bottom: 1rem;
 }
 
-.post-title {
+.hnfeeds-post-title {
   font-size: 1.25rem;
   font-weight: 600;
   margin-bottom: 0.5rem;
   line-height: 1.3;
 }
 
-.post-title a {
-  color: var(--text-color);
+.hnfeeds-post-title a {
+  color: var(--hnfeeds-text-color);
   text-decoration: none;
 }
 
-.post-title a:hover {
-  color: var(--accent-color);
+.hnfeeds-post-title a:hover {
+  color: var(--hnfeeds-accent-color);
 }
 
-.post-meta {
+.hnfeeds-post-meta {
   font-size: 0.85rem;
-  color: var(--secondary-text);
+  color: var(--hnfeeds-secondary-text);
 }
 
-.post-content {
+.hnfeeds-post-content {
   font-size: 1rem;
   line-height: 1.7;
-  color: var(--text-color);
+  color: var(--hnfeeds-text-color);
 }
 
-.post-content p {
+.hnfeeds-post-content p {
   margin-bottom: 1rem;
 }
 
-.post-content p:last-child {
+.hnfeeds-post-content p:last-child {
   margin-bottom: 0;
 }
 
-.post-content a {
-  color: var(--accent-color);
+.hnfeeds-post-content a {
+  color: var(--hnfeeds-accent-color);
   text-decoration: underline;
 }
 
-.post-content img {
+.hnfeeds-post-content img {
   max-width: 100%;
   height: auto;
   border-radius: 4px;
 }
 
-.post-content pre, .post-content code {
-  background-color: var(--sidebar-bg);
+.hnfeeds-post-content pre, .hnfeeds-post-content code {
+  background-color: var(--hnfeeds-sidebar-bg);
   border-radius: 4px;
   font-family: "SF Mono", Monaco, "Cascadia Code", "Roboto Mono", Consolas, monospace;
   font-size: 0.9em;
 }
 
-.post-content code {
+.hnfeeds-post-content code {
   padding: 0.2em 0.4em;
 }
 
-.post-content pre {
+.hnfeeds-post-content pre {
   padding: 1rem;
   overflow-x: auto;
   margin-bottom: 1rem;
 }
 
-.post-content pre code {
+.hnfeeds-post-content pre code {
   padding: 0;
   background: none;
 }
 
-.post-content blockquote {
-  border-left: 3px solid var(--accent-color);
+.hnfeeds-post-content blockquote {
+  border-left: 3px solid var(--hnfeeds-accent-color);
   padding-left: 1rem;
   margin: 1rem 0;
-  color: var(--secondary-text);
+  color: var(--hnfeeds-secondary-text);
   font-style: italic;
 }
 
-.post-content h1, .post-content h2, .post-content h3, .post-content h4 {
+.hnfeeds-post-content h1, .hnfeeds-post-content h2, .hnfeeds-post-content h3, .hnfeeds-post-content h4 {
   margin: 1.5rem 0 0.75rem;
   font-weight: 600;
 }
 
-.post-content ul, .post-content ol {
+.hnfeeds-post-content ul, .hnfeeds-post-content ol {
   margin: 1rem 0;
   padding-left: 1.5rem;
 }
 
-.post-content li {
+.hnfeeds-post-content li {
   margin-bottom: 0.5rem;
 }
 
-.read-more {
+.hnfeeds-read-more {
   display: inline-block;
   margin-top: 1rem;
-  color: var(--accent-color);
+  color: var(--hnfeeds-accent-color);
   text-decoration: none;
   font-weight: 500;
   font-size: 0.95rem;
 }
 
-.read-more:hover {
+.hnfeeds-read-more:hover {
   text-decoration: underline;
 }
 
 @media (max-width: 1024px) {
-  .sidebar {
+  .hnfeeds-sidebar {
     width: 240px;
   }
   
-  main {
+  .hnfeeds-main {
     margin-left: 240px;
   }
 }
 
 @media (max-width: 768px) {
-  header {
+  .hnfeeds-header {
     padding: 1rem;
   }
   
-  .header-nav {
+  .hnfeeds-header-nav {
     gap: 1rem;
     font-size: 0.9rem;
   }
   
-  .sidebar {
+  .hnfeeds-sidebar {
     width: 100%;
     position: relative;
     top: 0;
     border-right: none;
-    border-bottom: 1px solid var(--border-color);
+    border-bottom: 1px solid var(--hnfeeds-border-color);
     max-height: 300px;
   }
   
-  .container {
+  .hnfeeds-container {
     flex-direction: column;
   }
   
-  main {
+  .hnfeeds-main {
     margin-left: 0;
     padding: 1rem;
   }
@@ -367,20 +368,20 @@ main {
 </style>
 </head>
 <body>
-<header>
-  <h1>Blog Reader</h1>
-  <nav class="header-nav">
+<header class="hnfeeds-header">
+  <h1 class="hnfeeds-title">Blog Reader</h1>
+  <nav class="hnfeeds-header-nav">
     <a href="index.html">Home</a>
     <a href="about.html">About</a>
   </nav>
-  <button class="theme-toggle" onclick="toggleTheme()">Toggle Theme</button>
+  <button class="hnfeeds-theme-toggle" onclick="toggleTheme()">Toggle Theme</button>
 </header>
-<div class="container">
-  <aside class="sidebar">
-    <div class="sidebar-header">Blogs</div>
-    <ul class="nav-links"></ul>
+<div class="hnfeeds-container">
+  <aside class="hnfeeds-sidebar">
+    <div class="hnfeeds-sidebar-header">Blogs</div>
+    <ul class="hnfeeds-nav-links"></ul>
   </aside>
-  <main></main>
+  <main class="hnfeeds-main"></main>
 </div>
 <script>
 function toggleTheme() {
@@ -400,15 +401,15 @@ document.documentElement.setAttribute('data-theme', savedTheme);
 html = BeautifulSoup(html_template, "html.parser")
 
 # Add last updated timestamp to header
-header = html.find("header")
-last_updated_div = html.new_tag("div", **{"class": "last-updated"})
+header = html.find("header", class_="hnfeeds-header")
+last_updated_div = html.new_tag("div", **{"class": "hnfeeds-last-updated"})
 last_updated_div.string = f"Last updated: {last_updated}"
 # Insert after h1, before the theme toggle button
-h1 = html.find("h1")
+h1 = html.find("h1", class_="hnfeeds-title")
 h1.insert_after(last_updated_div)
 
-nav = html.find("ul", class_="nav-links")
-main = html.find("main")
+nav = html.find("ul", class_="hnfeeds-nav-links")
+main = html.find("main", class_="hnfeeds-main")
 
 for blog in tqdm(blogs, desc="Fetching blogs", unit="blog"):
     # Parse the blog RSS feed
@@ -423,10 +424,10 @@ for blog in tqdm(blogs, desc="Fetching blogs", unit="blog"):
     nav.append(li)
 
     # Create blog section
-    section = html.new_tag("section", id=safe_id, **{"class": "blog-section"})
+    section = html.new_tag("section", id=safe_id, **{"class": "hnfeeds-blog-section"})
 
     # Add blog title
-    h2 = html.new_tag("h2")
+    h2 = html.new_tag("h2", **{"class": "hnfeeds-blog-title"})
     title_link = html.new_tag(
         "a", href=blog.htmlUrl if hasattr(blog, "htmlUrl") else "#"
     )
@@ -436,11 +437,11 @@ for blog in tqdm(blogs, desc="Fetching blogs", unit="blog"):
 
     # Add posts with content
     for entry in feed.entries[:3]:
-        post_div = html.new_tag("article", **{"class": "post"})
+        post_div = html.new_tag("article", **{"class": "hnfeeds-post"})
 
         # Post header with title
-        post_header = html.new_tag("div", **{"class": "post-header"})
-        post_title = html.new_tag("h3", **{"class": "post-title"})
+        post_header = html.new_tag("div", **{"class": "hnfeeds-post-header"})
+        post_title = html.new_tag("h3", **{"class": "hnfeeds-post-title"})
 
         # Get link and title
         link = getattr(entry, "link", None) or getattr(entry, "id", "#")
@@ -459,14 +460,14 @@ for blog in tqdm(blogs, desc="Fetching blogs", unit="blog"):
                 entry, "updated", ""
             )
             if date_str:
-                post_meta = html.new_tag("div", **{"class": "post-meta"})
+                post_meta = html.new_tag("div", **{"class": "hnfeeds-post-meta"})
                 post_meta.string = date_str
                 post_header.append(post_meta)
 
         post_div.append(post_header)
 
         # Add post content
-        content_div = html.new_tag("div", **{"class": "post-content"})
+        content_div = html.new_tag("div", **{"class": "hnfeeds-post-content"})
 
         # Get content (prefer content, fallback to summary/description)
         content = getattr(entry, "content", None)
@@ -507,7 +508,7 @@ for blog in tqdm(blogs, desc="Fetching blogs", unit="blog"):
             href=link,
             target="_blank",
             rel="noopener noreferrer",
-            **{"class": "read-more"},
+            **{"class": "hnfeeds-read-more"},
         )
         read_more.string = "Read more →"
         post_div.append(read_more)
