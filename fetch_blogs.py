@@ -1,6 +1,6 @@
 #!/usr/bin/env -S uv run --script
 # /// script
-# dependencies = ["beautifulsoup4", "feedparser", "opml"]
+# dependencies = ["beautifulsoup4", "feedparser", "opml", "tqdm"]
 # ///
 
 import os
@@ -9,6 +9,7 @@ from datetime import datetime
 from bs4 import BeautifulSoup
 import feedparser
 import opml
+from tqdm import tqdm
 
 # Get current timestamp for "last updated"
 last_updated = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
@@ -409,7 +410,7 @@ h1.insert_after(last_updated_div)
 nav = html.find("ul", class_="nav-links")
 main = html.find("main")
 
-for blog in blogs:
+for blog in tqdm(blogs, desc="Fetching blogs", unit="blog"):
     # Parse the blog RSS feed
     feed = feedparser.parse(blog.xmlUrl)
 
