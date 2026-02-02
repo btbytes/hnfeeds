@@ -33,7 +33,7 @@ html_template = """<html>
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Blog Reader</title>
+<title>HN Blogs Reader</title>
 <style>
 :root {
   --hnfeeds-bg-color: #fafafa;
@@ -369,7 +369,7 @@ body {
 </head>
 <body>
 <header class="hnfeeds-header">
-  <h1 class="hnfeeds-title">Blog Reader</h1>
+  <h1 class="hnfeeds-title">HN Blogs Reader</h1>
   <nav class="hnfeeds-header-nav">
     <a href="index.html">Home</a>
     <a href="about.html">About</a>
@@ -378,6 +378,9 @@ body {
 </header>
 <div class="hnfeeds-container">
   <aside class="hnfeeds-sidebar">
+    <div class="hnfeeds-sidebar-header"><p>
+      Top HN Blogs (2025). <a href="https://github.com/btbytes/hnfeeds">source code</a>
+    </p></div>
     <div class="hnfeeds-sidebar-header">Blogs</div>
     <ul class="hnfeeds-nav-links"></ul>
   </aside>
